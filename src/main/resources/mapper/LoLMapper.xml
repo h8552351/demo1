@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hjw.demo.repository.LoLMapper">
+
+    <resultMap id="player" type="com.hjw.demo.admain.Player">
+        <id column="playerID" property="id"></id>
+        <result column="playerNum" property="num"></result>
+        <result column="playerCode" property="code"></result>
+        <result column="playerName" property="name"></result>
+    </resultMap>
+
+    <select id="queryAllPlayer" resultMap="player" >
+        SELECT * FROM  player WHERE playerNum like '%${num}%'
+    </select>
+    
+    <select id="login" resultMap="player">
+        SELECT * FROM player WHERE playerNum = #{num}
+    </select>
+
+</mapper>
+
